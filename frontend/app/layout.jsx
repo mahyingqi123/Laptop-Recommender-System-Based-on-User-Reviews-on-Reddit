@@ -8,7 +8,6 @@ const RootLayout = ({children}) => {
         <Navbar />
         <main>{children}</main>
       </body>
-
     </html>
   )
 }

@@ -5,12 +5,15 @@ const Home = () => {
     <section className="home">
         <h1>
             Find Your Perfect Laptop Match
+            <br />
+            <span>
+              Discover the best laptops tailored for your needs
+            </span>
         </h1>
-        <p>
-            Discover the best laptops tailored for your needs
-        </p>
+        <div className="search-bar-container">
+          <Searchbar />
+        </div>
         
-        <Searchbar />
     </section>
   )
 }
