@@ -1,0 +1,51 @@
+.laptop-list{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.laptop-card{
+    position: relative;
+    background-color: #E6EAEB;
+    margin: 1rem;
+    flex: 1 0 25rem;
+    max-width: 30rem;
+    max-height: 50rem;
+    transition: 0.2s;
+    color: black;
+}
+
+.laptop-card:hover{
+    transform: translateY(-0.5rem);
+    box-shadow: 0.5rem 0.75rem 1.5rem #bbb;
+
+}
+
+.laptop-image{
+    width: 100%;
+    padding-top: 100%; // This makes it a square
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+}
+
+.laptop-content{
+    margin: 2rem;
+}
+
+.laptopName{
+    font-size: 1.5rem;
+}
+
+.laptop-price{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.displayStack1, .displayStack2{
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
