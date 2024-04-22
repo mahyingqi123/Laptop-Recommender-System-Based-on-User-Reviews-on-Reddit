@@ -5,16 +5,16 @@ import {useRouter} from 'next/navigation'
 import "./searchbar.scss"
 
 
-const Searchbar = () => {
-  const [input, setInput] = useState("");
+const Searchbar = ({initialValue = ""}) => {
+  const [input, setInput] = useState(initialValue);
   const router = useRouter();
 
-  const handleChange = (value) => {
-    setInput(value);
+  const handleChange = (e) => {
+    setInput(e.target.value);
   }
 
   const handleSearch = () => {
-    router.push(`/result-page?query=${input}`)
+    router.push(`/result-page?search=${input}`)
   }
 
   return (
@@ -24,7 +24,7 @@ const Searchbar = () => {
         type="text" 
         placeholder="Describe what you will be using your laptop for" 
         value={input}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={handleChange}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleSearch()

@@ -1,6 +1,7 @@
 .laptop-list{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 2rem;
 }
 
 .laptop-card{
@@ -8,8 +9,8 @@
     background-color: #E6EAEB;
     margin: 1rem;
     flex: 1 0 25rem;
-    max-width: 30rem;
-    max-height: 50rem;
+    width: 30rem;
+    height: 40rem;
     transition: 0.2s;
     color: black;
 }
