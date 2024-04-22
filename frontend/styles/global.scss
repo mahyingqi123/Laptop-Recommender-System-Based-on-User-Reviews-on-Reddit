@@ -1,7 +1,10 @@
 $background-color: #003C7D;
 
 .home{
-    background-color: $background-color;
+    background-image: url(/images/laptop.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     min-height: 100vh - 8vh;
     display: flex;
     flex-direction: column;

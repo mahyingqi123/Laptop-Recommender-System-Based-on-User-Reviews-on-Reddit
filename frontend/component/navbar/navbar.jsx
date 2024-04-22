@@ -1,17 +1,17 @@
+import Link from "next/link"
 import "./navbar.scss"
 
 const Navbar = () => {
 
   return (
     <nav className="nav"> 
-      <a href="#">Logo</a>
+      <Link href="#">Logo</Link>
       <ul>
-        <li className=""><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">More</a></li>
+        <li className="/"><Link href="/">Home</Link></li>
+        <li><Link href="/result-page">Result</Link></li>
+        <li><Link href="/product-page">Product</Link></li>
       </ul>
     </nav>
-
   )
 }
 
