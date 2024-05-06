@@ -1,0 +1,25 @@
+.product-page{
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+.product-layout{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.product-details {
+    position: relative;
+    background-color: #E6EAEB;
+    margin: 1rem;
+    width: 70rem;;
+    height: 40rem;
+    transition: 0.2s;
+    color: black;
+}

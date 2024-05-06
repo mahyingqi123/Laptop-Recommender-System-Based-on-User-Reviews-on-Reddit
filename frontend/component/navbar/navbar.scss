@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+nav {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 10vh;
+  gap: 2rem;
+  padding: 0 3rem;
+  background-color: rgb(0, 33, 65);
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+li {
+  list-style: none;
+}
+
+li.active {
+  background-color: #3da2f5;
+}
+
+li:hover {
+  background-color: #003C7D;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
