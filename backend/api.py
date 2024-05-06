@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 
 def compute_laptop_score(products, comments, aspects_from_query, id_to_distance):
     """
-    
+    Compute the laptop score based on the certain attributes
     """
     result = {}
 
@@ -55,6 +55,9 @@ def query_to_dict(query, crsr):
     return result
 
 def laptop_to_dict(query, crsr):
+    """
+    Convert the laptop query result to a dictionary
+    """
     result = {}
     for i in query:
         tmp_result = {}
@@ -79,6 +82,10 @@ def get_aspects(quadruples):
     return list(result)
 
 def map_laptop_to_comments(recommendations):
+    """
+    Get the laptops that are recommended in the comments
+    Then map the laptop to the comments
+    """
     product_comment_list = {}
     for key, val in recommendations.items():
         laptop_list = [laptop for laptop in ast.literal_eval(val['laptop_found'])]
@@ -89,6 +96,10 @@ def map_laptop_to_comments(recommendations):
     return product_comment_list
 
 def get_parent_aspects(recommendations, aspect_list):
+    """
+    Get the aspects from the parent comments of the comment
+
+    """
     for key,val in recommendations.items():
         parent_full_id = val['parent_id']
         parent_id = parent_full_id[3:]
@@ -104,6 +115,9 @@ def get_parent_aspects(recommendations, aspect_list):
     return recommendations
 
 def get_recommendation_comments(thread_ids, comments):
+    """
+    Get the comments under chosen submission that are recommending a product
+    """
     recommendation_comment = {}
     for key, val in comments.items():
         if val['is_recommend'] == 1 and len(val['laptop_found']) > 2 and val['thread_id'] in thread_ids:
@@ -111,6 +125,9 @@ def get_recommendation_comments(thread_ids, comments):
     return recommendation_comment
 
 def get_data_from_db():
+    """
+    Connect to the database and get all the data
+    """
     connection = psycopg2.connect(host='localhost',port='5432',database='fyp',user='postgres',password='12345678')
     crsr = connection.cursor()
 
@@ -126,19 +143,42 @@ def get_data_from_db():
     return submissions, comments, laptops
 
 def get_laptops(products):
+    """
+    Get the laptops using the key
+    """
     for key,val in products.items():
         if key in laptops:
-            products[key]['laptop'] = laptops[key]
+            products[key]['image']  = laptops[key]['image']
+            products[key]['price'] = laptops[key]['price']
     return products
 
 def get_comments(products):
+    """
+    Get the comments for each product
+    """
+    
     for key,val in products.items():
+        comment_list = []
         for comment in val['comments']:
             if comment in comments:
-                products[key]['comments'][comment] = comments[comment]
+                comment_list.append(comments[comment]['text'])
+        products[key]['comments'] = comment_list
     return products
 
+def create_id(products):
+    """
+    Create an id for each product
+    """
+    result = {}
+    count = 0
+    for key,val in products.items():
+        result[count] = val
+        result[count]['name'] = key
+        count += 1
+    return result
+
 app = Flask(__name__)
+
 # load models before everything to avoid loading them multiple times
 encoder = SentenceTransformer('bert-base-nli-mean-tokens')
 aspect_extractor = ABSAInstruction.ABSAGenerator("model")
@@ -154,7 +194,7 @@ http://127.0.0.1:5000/search_result?query=laptop with great battery
 print("API finished loading")
 
 @app.route('/search_result', methods=['GET'])
-def home():
+def search_result():
     
     # get user text query
     user_query = request.args.get('query')
@@ -193,6 +233,21 @@ def home():
     result = get_laptops(product_scores)
 
     result = get_comments(result)
+
+    result = create_id(result)
+
+    return jsonify(result)
+
+
+# use the route http://127.0.0.1:5000/search_laptop?query=
+# to search for laptop using the name
+@app.route('/search_laptop', methods=['GET'])
+def search_laptop():
+    
+    # get user text query
+    laptop = request.args.get('query')
+    
+    result = laptops[laptop]
 
     return jsonify(result)
 
