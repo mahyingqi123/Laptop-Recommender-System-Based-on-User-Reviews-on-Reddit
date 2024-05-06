@@ -21,29 +21,30 @@ chrome_options = Options()
 chrome_options.add_argument(f'user-agent={user_agent}')
 driver = webdriver.Chrome(options=chrome_options)
 driver.set_window_size(900,1100)
-# driver.get(url)
-# WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//div[contains(@class,"pageNumbers")]')))
-# page_numbers = driver.find_elements(By.XPATH,'//div[contains(@class,"pageNumbers")]//a')
-# page = 1
-# laptop_url = {}
+driver.get(url)
 
-# WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//ul[contains(@class,"items")]')))
-# laptop_list = driver.find_elements(By.XPATH,'//ul[contains(@class,"items")]//li')
-# for laptop in laptop_list:
-#     link = laptop.find_element(By.XPATH,'.//a').get_attribute('href')
-#     name = laptop.find_element(By.XPATH,'.//a').get_attribute('title')
-#     price = laptop.find_element(By.XPATH,'.//div//span').text
-#     if name not in laptop_url:
-#         laptop_url[name] = {}
-#     laptop_url[name]["url"] = link
-#     laptop_url[name]["price"] = price
+WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//div[contains(@class,"pageNumbers")]')))
+page_numbers = driver.find_elements(By.XPATH,'//div[contains(@class,"pageNumbers")]//a')
+page = 1
+laptop_url = {}
 
-# print(len(laptop_url))
+WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//ul[contains(@class,"items")]')))
+laptop_list = driver.find_elements(By.XPATH,'//ul[contains(@class,"items")]//li')
+for laptop in laptop_list:
+    link = laptop.find_element(By.XPATH,'.//a').get_attribute('href')
+    name = laptop.find_element(By.XPATH,'.//a').get_attribute('title')
+    price = laptop.find_element(By.XPATH,'.//div//span').text
+    image = laptop.find_element(By.XPATH,'.//img').get_attribute('src')
+    if name not in laptop_url:
+        laptop_url[name] = {}
+    laptop_url[name]["url"] = link
+    laptop_url[name]["price"] = price
+    laptop_url[name]["image"] = image
 
 
-# with open("laptop_url.json", "w") as f:
-#     f.write(json.dumps(laptop_url, indent=4))
-# driver.quit()
+with open("laptop_url.json", "w") as f:
+    f.write(json.dumps(laptop_url, indent=4))
+driver.quit()
 
 laptop_file = open("laptop_url.json", "r")
 laptop_url = json.load(laptop_file)
