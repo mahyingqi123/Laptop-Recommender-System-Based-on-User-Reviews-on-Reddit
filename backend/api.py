@@ -193,9 +193,11 @@ http://127.0.0.1:5000/search_result?query=laptop with great battery
 """
 print("API finished loading")
 
+last_query = None
+
 @app.route('/search_result', methods=['GET'])
 def search_result():
-    
+    global last_query
     # get user text query
     user_query = request.args.get('query')
 
@@ -235,20 +237,36 @@ def search_result():
     result = get_comments(result)
 
     result = create_id(result)
-
+    last_query = result
     return jsonify(result)
+
+
+# use the route http://127.0.0.1:5000/filter_price?max=&min=
+# to filter laptop using price
+@app.route('/filter_price', methods=['GET'])
+def filter_by_range():
+    global last_query
+    # get user text query
+    max_price = request.args.get('max')
+    min_price = request.args.get('min')
+    result = {}
+    for i in last_query:
+        if last_query[i]['price'] <= int(max_price) and last_query[i]['price'] >= int(min_price):
+            result[i] = last_query[i]
+    return jsonify(result)
+
 
 
 # use the route http://127.0.0.1:5000/search_laptop?query=
 # to search for laptop using the name
 @app.route('/search_laptop', methods=['GET'])
 def search_laptop():
-    
+    global last_quer
+    print(last_query)
     # get user text query
-    laptop = request.args.get('query')
-    
-    result = laptops[laptop]
-
+    laptop_id = request.args.get('query')
+    result = last_query[int(laptop_id)]
+    result['laptop_details'] = laptops[result['name']]
     return jsonify(result)
 
 
