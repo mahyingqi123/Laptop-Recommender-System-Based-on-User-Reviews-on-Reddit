@@ -4,7 +4,6 @@ import { FaStar } from "react-icons/fa";
 const Product = () => {
     return (
         <div className="product-page">
-            <h1>Product Page</h1>
             <div className="product-layout">
                 <div className="product-image">
                     <img src="" alt="Product" />
