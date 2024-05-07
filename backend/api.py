@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import psycopg2
-import psycopg2
 import ast
 from pyabsa import ABSAInstruction
 from sklearn.metrics.pairwise import cosine_similarity
@@ -128,7 +127,7 @@ def get_data_from_db():
     """
     Connect to the database and get all the data
     """
-    connection = psycopg2.connect(host='localhost',port='5432',database='fyp',user='postgres',password='12345678')
+    connection = psycopg2.connect(host='localhost',port='5432',database='postgres',user='postgres',password='12345678')
     crsr = connection.cursor()
 
     crsr.execute('select * from submissions;')
