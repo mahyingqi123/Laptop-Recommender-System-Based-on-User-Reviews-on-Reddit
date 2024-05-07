@@ -1,0 +1,6 @@
+flask
+psycopg2
+ast
+pyabsa
+sklearn
+sentence_transformers
