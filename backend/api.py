@@ -260,12 +260,11 @@ def filter_by_range():
 
 
 
-# use the route http://127.0.0.1:5000/search_laptop?query=
+# use the route http://127.0.0.1:5000/search_laptop_by_id?query=
 # to search for laptop using the name
-@app.route('/search_laptop', methods=['GET'])
+@app.route('/search_laptop_by_id', methods=['GET'])
 def search_laptop():
-    global last_quer
-    print(last_query)
+    global last_query
     # get user text query
     laptop_id = request.args.get('query')
     result = last_query[int(laptop_id)]
