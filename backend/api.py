@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import psycopg2
 import ast
 from pyabsa import ABSAInstruction
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
+import ast
 
 def compute_laptop_score(products, comments, aspects_from_query, id_to_distance):
     """
@@ -127,7 +129,7 @@ def get_data_from_db():
     """
     Connect to the database and get all the data
     """
-    connection = psycopg2.connect(host='localhost',port='5432',database='postgres',user='postgres',password='12345678')
+    connection = psycopg2.connect(host='localhost',port='5432',database='fyp',user='postgres',password='9988')
     crsr = connection.cursor()
 
     crsr.execute('select * from submissions;')
@@ -168,15 +170,17 @@ def create_id(products):
     """
     Create an id for each product
     """
-    result = {}
+    result = []
     count = 0
-    for key,val in products.items():
-        result[count] = val
-        result[count]['name'] = key
+    for key, val in products.items():
+        val['name'] = key
+        val['id'] = count
+        result.append(val)
         count += 1
     return result
 
 app = Flask(__name__)
+CORS(app)
 
 # load models before everything to avoid loading them multiple times
 encoder = SentenceTransformer('bert-base-nli-mean-tokens')
