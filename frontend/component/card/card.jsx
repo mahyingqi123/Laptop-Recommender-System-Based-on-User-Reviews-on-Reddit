@@ -12,7 +12,7 @@ const Card = ({ laptop }) => {
     return (
         <div className="laptop-list">
             <div key={laptop.id} className="laptop-card">
-                <img src={laptop.image} className="laptop-image" />
+                <img src={laptop.image} className="laptops-image" />
                 <div className="laptop-content">
                     <div className="displayStack1">
                         <h3 className="laptopName">{laptop.name}</h3>
