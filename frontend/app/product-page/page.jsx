@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 import "./product.scss";
 import { FaStar } from "react-icons/fa";
+import BackButton from "@component/backbutton/backbutton";
 
 const Product = () => {
     const effectRun = useRef(false);
@@ -39,6 +40,9 @@ const Product = () => {
 
     return (
         <div className="product-page">
+            <div className="back-button-container">
+                <BackButton />
+            </div>
             <div className="product-layout">
                 <div className="product-image">
                     <img src={laptopData.image} alt="Product" className="laptop-image"/>

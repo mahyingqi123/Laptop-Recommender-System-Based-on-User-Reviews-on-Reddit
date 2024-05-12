@@ -28,4 +28,11 @@
     height: 40rem;
     transition: 0.2s;
     color: black;
+    border-radius: 10px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 100px;
+    left: 20px;
 }
