@@ -1,0 +1,7 @@
+flask==3.0.3
+psycopg2==2.9.9
+pyabsa==2.4.1
+sklearn==1.2.2
+sentence_transformers==2.6.0
+torch==2.2.1
+transformers==4.38.2

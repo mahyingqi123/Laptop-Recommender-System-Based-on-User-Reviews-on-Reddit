@@ -1,7 +1,0 @@
-flask
-psycopg2
-ast
-pyabsa
-sklearn
-sentence_transformers
-torch==2.2.1
