@@ -61,7 +61,7 @@ const Modal = ({open, onClose, laptopID}) => {
               </div>
             </div>
             <h3>RM{laptopData.price}</h3>
-            <h3>Laptop Detail</h3>
+            <h3 style={{color:'royalblue'}}>Laptop Detail</h3>
             <div className="product-details">
               <p>Processor: {laptopData?.laptop_details?.Processor || 'N/A'}</p>
               <p>GPU: {laptopData?.laptop_details?.GPU || 'N/A'}</p>
@@ -92,7 +92,7 @@ const Modal = ({open, onClose, laptopID}) => {
               <p>Product Link: <a className='url' href={laptopData?.laptop_details?.url || '#'}>Click Here</a></p>
             </div>
             <div className='comment-container'>
-              <h3>Comments    <BiSolidCommentDetail /><span> {laptopData.total_comments}</span></h3>
+              <h3 style={{color:'royalblue'}}>Comments    <BiSolidCommentDetail /><span> {laptopData.total_comments}</span></h3>
               <Comment comments={laptopData.comments}/>
             </div>
             </div>  
