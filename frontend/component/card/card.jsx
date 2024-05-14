@@ -32,7 +32,7 @@ const Card = ({ laptop }) => {
                             <span>{laptop.total_upvotes}</span> {/* Replace with your actual data */}
                         </div>
                         <div className="productDetail">
-                            <Button onClick={()=> setOpenModal(true)}>View Details</Button>
+                            <Button className='detailBtn' onClick={()=> setOpenModal(true)}>View Details</Button>
                         </div>
                     </div> 
                 </div>

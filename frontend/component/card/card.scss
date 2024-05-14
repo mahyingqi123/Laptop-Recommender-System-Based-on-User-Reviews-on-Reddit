@@ -71,3 +71,16 @@
 .interaction{
     margin-left: 1rem;
 }
+
+.detailBtn{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color:royalblue;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
