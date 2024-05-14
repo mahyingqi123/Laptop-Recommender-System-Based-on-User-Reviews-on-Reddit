@@ -104,7 +104,7 @@ const Result = () => {
                     <div className="loading">Loading...</div>
                 ) : (
                     Object.values(laptopData).map((laptop) => (
-                        <Card laptop={laptop} />
+                        <Card key={laptop.id} laptop={laptop} />
                     ))
                 )}
             </div>
