@@ -237,6 +237,7 @@ def search_result():
     # get the laptops
     result = get_laptops(product_scores)
 
+    # get the comments for each product
     result = get_comments(result)
 
     result = create_id(result)
@@ -252,10 +253,14 @@ def filter_by_range():
     # get user text query
     max_price = request.args.get('max')
     min_price = request.args.get('min')
-    result = {}
-    for i in last_query:
-        if last_query[i]['price'] <= int(max_price) and last_query[i]['price'] >= int(min_price):
-            result[i] = last_query[i]
+    if not max_price or not min_price:
+        return jsonify({"error": "max and min parameters are required"}), 400
+    max_price = int(max_price)
+    min_price = int(min_price)
+    result = []
+    for laptop in last_query:
+        if 'price' in laptop and int(laptop['price']) <= max_price and int(laptop['price']) >= min_price:
+            result.append(laptop)
     return jsonify(result)
 
 
