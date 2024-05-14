@@ -18,6 +18,10 @@ const Result = () => {
     const apiURL = "http://127.0.0.1:5000";
 
     const handleFilter = (minPrice, maxPrice) => {
+        if (!minPrice || !maxPrice) {
+            alert('minPrice and maxPrice must not be empty');
+            return;
+        }
         setLoading(true);
         axios.get(`${apiURL}/filter_price?max=${maxPrice}&min=${minPrice}`)
         .then(response => {
