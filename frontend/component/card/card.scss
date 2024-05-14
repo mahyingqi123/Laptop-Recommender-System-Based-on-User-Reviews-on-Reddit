@@ -11,7 +11,7 @@
     margin: 1rem;
     flex: 1 0 25rem;
     width: 30rem;
-    height: 40rem;
+    height: 41rem;
     transition: 0.2s;
     color: black;
 }
@@ -44,16 +44,30 @@
     font-weight: bold;
 }
 
-.displayStack1, .displayStack2{
+.displayStack1{
     margin: 2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.displayStack2{
+    position: absolute;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 5px;
+}
+
 .productDetail{
+    margin-left: 8rem;
     a{  
         text-decoration: underline;
         color: #003C7D;
     }
+}
+
+.interaction{
+    margin-left: 1rem;
 }
