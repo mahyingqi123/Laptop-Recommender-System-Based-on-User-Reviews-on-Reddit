@@ -23,5 +23,15 @@
     justify-content: left;
     margin-top: 3rem;
     margin-left: 12rem;
+}
 
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 }

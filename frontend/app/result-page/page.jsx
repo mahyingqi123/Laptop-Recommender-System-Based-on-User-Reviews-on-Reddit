@@ -3,55 +3,54 @@ import { useSearchParams } from "next/navigation";
 import Card from "@component/card/card";
 import Searchbar from "@component/searchbar/searchbar";
 import "./result.scss";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import axios from 'axios';
 
 const Result = () => {
-    const effectRun = useRef(false);
     const searchParams = useSearchParams();
-    const search = searchParams.get("search");
     const [laptopData, setLaptop] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [resultCount, setResultCount] = useState(0);
+
 
     const apiURL = "http://127.0.0.1:5000";
 
     useEffect(() => {
+        const searchTerm = searchParams.get('search');
         setLoading(true);
-        if(effectRun.current === false) {
-            const fetchData = async () => {
-                try {
-                    const response = await axios.get(`${apiURL}/search_result?query=${search}`);
-                    const data = response.data;
-                    setLoading(false);
-                    setLaptop(data);
-                }
-                catch (error) {
-                    console.log(error);
-                }
+        setResultCount(0);
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiURL}/search_result?query=${searchTerm}`);
+                const data = response.data;
+                setLoading(false);
+                setLaptop(data);
+                setResultCount(data.length);
             }
-            fetchData();
-            return () => {
-                effectRun.current = true;
+            catch (error) {
+                console.log(error);
             }
         }
+        if(searchTerm){
+            fetchData();
+        }
     }
-    , [search]);
+    , [searchParams]);
 
     return (
         <div>
             <div className="searchbar-container">
-                <Searchbar initialValue={search}/>
+                <Searchbar initialValue={searchParams.get('search')}/>
             </div>
-            <div className="result-title">Total Number of Result Found:</div>
+            <div className="result-title">Total Number of Result Found: {resultCount}</div>
             <div className="card-container">
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                Object.values(laptopData).map((laptop) => (
-                    console.log(laptop),
-                    <Card laptop={laptop} />
-                ))
-            )}
+                {loading ? (
+                    <div className="loading">Loading...</div>
+                ) : (
+                    Object.values(laptopData).map((laptop) => (
+                        <Card laptop={laptop} />
+                    ))
+                )}
             </div>
         </div>
     );

@@ -13,7 +13,6 @@ const Home = () => {
         <div className="search-bar-container">
           <Searchbar />
         </div>
-        
     </section>
   )
 }
