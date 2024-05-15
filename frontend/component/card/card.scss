@@ -32,23 +32,17 @@
 }
 
 .laptop-content{
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .laptopName{
-    font-size: 1.5rem;
-}
-
-.laptop-price{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
 }
 
-.displayStack1{
-    margin: 2rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.laptop-price{
+    margin-top: 5px;
+    font-size: 1.5rem;
 }
 
 .displayStack2{
