@@ -15,10 +15,8 @@ const Card = ({ laptop }) => {
             <div key={laptop.id} className="laptop-card">
                 <img src={laptop.image || defaultImage} className="laptops-image"/>
                 <div className="laptop-content">
-                    <div className="displayStack1">
-                        <h3 className="laptopName">{laptop.name}</h3>
-                        <div className="productPrice">RM{laptop.price}</div>
-                    </div> 
+                    <h3 className="laptopName">{laptop.name}</h3>
+                    <h3 className="laptop-price">RM{laptop.price}</h3>
                     <div className="displayStack2">
                         <div className="productRating">
                             <div className="rating"> {Math.round(laptop.score)}% </div>

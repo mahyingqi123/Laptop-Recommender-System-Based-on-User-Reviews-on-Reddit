@@ -23,6 +23,12 @@ const Result = () => {
             setLaptop(originalData);
             return;
         }
+        if (minPrice > maxPrice) {
+            alert('minPrice must be smaller than maxPrice');
+            setLaptop(originalData);
+            return;
+        }
+
         setLoading(true);
         axios.get(`${apiURL}/filter_price?max=${maxPrice}&min=${minPrice}`)
         .then(response => {

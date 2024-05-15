@@ -48,6 +48,7 @@ const Modal = ({open, onClose, laptopID}) => {
         <div className="modal-contain">
           <div className="modal-image">
             <img className='lapImage' src={laptopData.image || defaultImage}/>
+            <p>Product Link: <a className='url' href={laptopData?.laptop_details?.url || '#'} target='_blank'>Click Here</a></p>
           </div>
           <div className="product-overall">
             <h2>{laptopData.name}</h2>
@@ -89,7 +90,6 @@ const Modal = ({open, onClose, laptopID}) => {
               <p>Mic: {laptopData?.laptop_details?.Mic || 'N/A'}</p>
               <p>Speaker: {laptopData?.laptop_details?.Speaker || 'N/A'}</p>
               <p>Cooling System: {laptopData?.laptop_details?.Cooling || 'N/A'}</p>
-              <p>Product Link: <a className='url' href={laptopData?.laptop_details?.url || '#'} target='_blank'>Click Here</a></p>
             </div>
             <div className='comment-container'>
               <h3 style={{color:'royalblue'}}>Comments    <BiSolidCommentDetail /><span> {laptopData.total_comments}</span></h3>

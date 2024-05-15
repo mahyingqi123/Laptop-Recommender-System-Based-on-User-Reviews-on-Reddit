@@ -14,6 +14,10 @@ const Searchbar = ({initialValue = ""}) => {
   }
 
   const handleSearch = () => {
+    if (!input) {
+      alert('Please enter a search term');
+      return;
+    }
     router.push(`/result-page?search=${input}`)
   }
 
@@ -31,6 +35,7 @@ const Searchbar = ({initialValue = ""}) => {
           }
         }}
       />
+      <button className="filtter-btn" onClick={handleSearch}>Search</button>
     </div>
   )
 }
