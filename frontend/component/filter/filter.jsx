@@ -12,6 +12,14 @@ const Filter = ({onFilter, search}) => {
         onFilter(minPrice, maxPrice);
     }
 
+    const handleMinPrice = (e) => {
+        setMinPrice(e.target.value);
+    }
+
+    const handleMaxPrice = (e) => {
+        setMaxPrice(e.target.value);
+    }
+
     useEffect(() => {
         setMinPrice('');
         setMaxPrice('');
@@ -19,9 +27,9 @@ const Filter = ({onFilter, search}) => {
 
   return (
     <div className="filter-container">
-        <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} placeholder="Min price" />
+        <input type="number" value={minPrice} onChange={handleMinPrice} placeholder="Min price" />
         -
-        <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} placeholder="Max price" />
+        <input type="number" value={maxPrice} onChange={handleMaxPrice} placeholder="Max price" />
         <button className="filtter-btn" onClick={handleFilter}>Filter</button>
     </div>
   )
