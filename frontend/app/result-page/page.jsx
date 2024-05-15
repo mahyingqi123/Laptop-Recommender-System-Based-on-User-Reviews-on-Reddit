@@ -20,13 +20,13 @@ const Result = () => {
     const handleFilter = (minPrice, maxPrice) => {
         if (!minPrice || !maxPrice) {
             alert('minPrice and maxPrice must not be empty');
+            setLaptop(originalData);
             return;
         }
         setLoading(true);
         axios.get(`${apiURL}/filter_price?max=${maxPrice}&min=${minPrice}`)
         .then(response => {
             setLaptop(response.data);
-            setOriginalData(response.data);
             setResultCount(response.data.length);
             setLoading(false);
         })
