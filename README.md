@@ -4,7 +4,7 @@ Laptop Recommender System Based on User Reviews on Reddit is the **Final Year Pr
 
 ## Overview
 
-This project provides a full-stack laptop recommendation system powered by **Natural Language Processing (NLP)** techniques. By scraping **Reddit** threads for user reviews, we use **BERT embeddings** for text representation and **Aspect Term Based Sentiment Analysis** to generate meaningful recommendations.
+This project provides a full-stack laptop recommendation system powered by **Natural Language Processing (NLP)** techniques. By scraping **Reddit** threads for user reviews, we use **BERT based semantic search** for text representation and **Aspect Term Based Sentiment Analysis** to generate meaningful recommendations.
 
 ## Features
 
